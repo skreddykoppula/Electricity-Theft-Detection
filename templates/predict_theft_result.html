@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<style>
+    /* Add the following style to your existing CSS or in a separate style tag */
+    .main-content {
+        text-align: center;
+        font-family: 'Your_Custom_Font', sans-serif; /* Replace 'Your_Custom_Font' with the desired font name */
+    }
+
+    .custom-card {
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        margin-top: 20px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    input[type="file"] {
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        margin-top: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="main-content">
+        <div class="custom-card">
+            <h2>Predict Energy Theft</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" class="form-control">
+                <input type="submit" value="Predict" class="btn btn-primary mt-3">
+            </form>
+            <div>
+                <h3>Results:</h3>
+                <ul>
+                    {% for result in results %}
+                        <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

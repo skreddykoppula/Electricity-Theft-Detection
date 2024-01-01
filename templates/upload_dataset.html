@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    /* Add the following style to your existing CSS or in a separate style tag */
+    .main-content {
+        text-align: center;
+        font-family: 'Your_Custom_Font', sans-serif; /* Replace 'Your_Custom_Font' with the desired font name */
+    }
+
+    .custom-card {
+        max-width: 400px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+        margin-top: 20px;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    input[type="file"] {
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        margin-top: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+<div class="container mt-5">
+    <div class="card upload-card">
+        <div class="card-body text-center">
+            <h2 class="card-title">Upload a CSV Dataset</h2>
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Select a CSV file:</label>
+                    <input type="file" class="form-control-file" name="file" id="file" accept=".csv" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+
+            {% if dataset_head %}
+            <div class="mt-4 text-center">
+                <h2>Uploaded Dataset Preview</h2>
+                <div class="card preview-card text-center">
+                    <div class="card-body text-center">
+                        <pre class="card-text text-center">{{ dataset_head | safe }}</pre>
+                    </div>
+                </div>
+                <h3>Dataset Size: {{ dataset_size }}</h3>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

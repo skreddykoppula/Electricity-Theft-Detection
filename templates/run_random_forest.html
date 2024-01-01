@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card result-card">
+        <div class="card-body">
+            <h1 class="card-title mb-4">RF Result</h1>
+            <div class="card-text result-text">
+                <pre>{{ results_text | safe }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

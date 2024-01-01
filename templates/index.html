@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='logo.png') }}"
+      type="image/x-icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <title>Electricity Theft Detection</title>
+
+    <!-- Inside the <head> section of your HTML template -->
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img
+              src="{{ url_for('static', filename='logo.png') }}"
+              alt="logo"
+              style="width: 50px; height: 50px; margin-right: 10px"
+            />
+            <h1
+              class="site-title"
+              style="color: #e9e2e2; margin-top: 15px; display: inline-block"
+            >
+              An Efficient Approach For Electricity Theft Detection in Smart
+              Grids
+            </h1>
+          </a>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-outline-light btn-hover-blue"
+                href="{{ url_for('home') }}"
+                >Home</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+        </div>
+      </div>
+    </main>
+
+    <marquee class="toll-free-marquee" direction="left" behavior="scroll">
+      Toll-Free Number: 1-800-123-4567
+    </marquee>
+
+    <div class="img1">
+      <img
+        style="width: 100%; height: 500px"
+        src="{{ url_for('static', filename='current.jpg') }}"
+        alt="Current"
+      />
+    </div>
+
+    <div class="button-container text-center">
+      <a href="{{ url_for('upload_dataset') }}" class="btn btn-primary"
+        >Upload Dataset</a
+      >
+      <a href="{{ url_for('preprocess_data') }}" class="btn btn-primary"
+        >Preprocess Data</a
+      >
+      <a href="{{ url_for('generate_cnn_model') }}" class="btn btn-primary"
+        >Generate ANN Model</a
+      >
+      <a href="{{ url_for('cnn_with_random_forest') }}" class="btn btn-primary"
+        >ANN with Random Forest</a
+      >
+      <a href="{{ url_for('cnn_with_svm') }}" class="btn btn-primary"
+        >ANN with SVM</a
+      >
+      <a href="{{ url_for('run_random_forest') }}" class="btn btn-primary"
+        >Run Random Forest</a
+      >
+      <a href="{{ url_for('run_svm') }}" class="btn btn-primary">Run SVM</a>
+      <a href="{{ url_for('predict_theft') }}" class="btn btn-primary"
+        >Predict Electricity Theft</a
+      >
+      <a href="{{ url_for('graph_comparison') }}" class="btn btn-primary"
+        >Graph Comparison</a
+      >
+    </div>
+
+    <div class="img2 text-center">
+      <img
+        src="{{ url_for('static', filename='giphy.gif') }}"
+        alt="smartidea"
+      />
+    </div>
+
+    {% block content %}{% endblock %}
+    <table>
+      <tr>
+        <td>
+          <img
+            src="{{ url_for('static', filename='theft.jpg') }}"
+            width="700px"
+            height="500px"
+          />
+        </td>
+        <td>
+          <p style="font-size: 20px">
+            Power systems throughout the world are at serious risk from
+            electricity theft, which can lead to large financial losses. This
+            paper presents a novel approach to analyze electricity consumption
+            data using deep learning, specifically Artificial Neural Networks
+            (ANN). The research employs a State Grid Corporation of China
+            dataset and integrates time-domain and frequency-domain data to
+            suggest a novel Deep Neural Network (DNN) classification technique
+            that considerably improves theft detection precision. The study
+            maximizes feature space and highlights the significance of
+            frequency-domain features by utilizing methods such as Principal
+            Component Analysis (PCA) and Minimum Redundancy Maximum Relevance
+            (mRMR). The Adam optimizer and a Bayesian optimizer are used in the
+            model optimization process to adjust the hyperparameters. This study
+            makes a significant contribution to solving the urgent global
+            problem of electricity theft.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p style="font-size: 20px">
+            The security of smart grids is becoming more and more important as
+            they become more commonplace, not just to avoid losing money but
+            also to guarantee a steady and dependable supply of electricity. The
+            results of this study highlight the potential of cutting-edge
+            machine learning methods in resolving these issues and provide a
+            framework for more research and development in the field of smart
+            grid electricity theft detection. Not only will these developments
+            safeguard the electrical system, but they will also make it easier
+            to incorporate renewable energy sources and guarantee fair consumer
+            billing. The development of smart grid technology and its ability to
+            withstand cyberattacks and power theft have a lot of promise for the
+            future.
+          </p>
+        </td>
+        <td>
+          <img
+            src="{{ url_for('static', filename='theft2.jpeg') }}"
+            width="700px"
+            height="500px"
+          />
+        </td>
+      </tr>
+    </table>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <img
+              src="{{ url_for('static', filename='logo.png') }}"
+              alt="Logo"
+            />
+            <h2>
+              An Efficient Approach For Electricity Theft Detection in Smart
+              Grids
+            </h2>
+          </div>
+          <div class="col-md-4 text-center">
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="{{ url_for('home') }}"
+                  class="btn btn-outline-light btn-hover-blue"
+                  ><i class="fas fa-home"></i> Home</a
+                >
+              </li>
+              <!-- Add more icons and links as needed -->
+            </ul>
+          </div>
+          <div class="col-md-4 text-center">
+            <h3>Follow Us</h3>
+            <a href="https://twitter.com/" target="_blank" class="social-icon"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              class="social-icon"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              class="social-icon"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

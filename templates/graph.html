@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<style>
+    /* Add the following style to your existing CSS or in a separate style tag */
+    .container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .custom-card {
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #fff;
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="custom-card">
+        <h1>Performance Metrics</h1>
+        <h2>Graph of Performance Metrics for Different Algorithms</h2>
+        <img src="{{ url_for('static', filename='performance_graph.png') }}" alt="Performance Graph">
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card data-card">
+        <div class="card-body text-center">
+            <h1 class="card-title">Preprocessed Data</h1>
+            <div class="card-text">
+                <pre>{{ preprocessed_data_head | safe }}</pre>
+            </div>
+            <h3>Dataset Size: {{ dataset_size }}</h3>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

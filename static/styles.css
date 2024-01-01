@@ -1,0 +1,84 @@
+.site-header {
+    background-color: #24c5c2;
+    color: #fff;
+    padding: 10px 0; /* Adjust the padding as needed */
+    margin-bottom: 20px;
+}
+
+.navbar-brand img {
+    max-width: 100%;
+    height: auto;
+}
+
+.navbar-brand .site-title {
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    margin-bottom: 0;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-nav .nav-link.btn {
+    margin-right: 15px; /* Adjust the spacing between navigation items */
+}
+
+/* Custom style for button hover */
+.navbar-nav .nav-link.btn-hover-blue:hover {
+    color: #fff;
+    background-color: #007bff; /* Change to the desired blue color on hover */
+    border-color: #007bff; /* Change to the desired blue color on hover */
+}
+
+.toll-free-marquee {
+    background-color: #ae6150; /* Adjust the background color as needed */
+    color: #fff; /* Adjust the text color as needed */
+    padding: 10px;
+    font-size: 18px; /* Adjust the font size as needed */
+    font-weight: bold;
+}
+
+
+.button-container {
+    margin-top: 20px; /* Adjust the margin-top as needed */
+}
+
+/* styles.css */
+
+.footer {
+    margin-top: 20px; /* Adjust the value as needed */
+    background-color: #a3d9a9; /* Change the background color if needed */
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer img {
+    width: 100px;
+    height: 100px;
+}
+
+.footer h2 {
+    margin-top: 10px;
+}
+
+.footer h3 {
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+/* Add more styles as needed */
+
+.result-card {
+    text-align: center;
+    font-family: 'Your_Custom_Font', sans-serif; /* Replace 'Your_Custom_Font' with the desired font name */
+}
+
+.result-text {
+    margin: 0 auto; /* Centering the text horizontally */
+    max-width: 80%; /* Adjust the width as needed */
+}

@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,flash
 import numpy as np
 import os
 from tensorflow.keras.models import Sequential
@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 
 app = Flask(__name__)
-
+app.secret_key = 'zjkxndqw92543sxj3qewsdx'
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'csv'}
 
@@ -58,6 +58,7 @@ def upload_dataset():
             dataset = pd.read_csv(file_path)  # Load the data into a pandas DataFrame
             dataset_head = dataset.head().to_string()
             dataset_size = len(dataset)  # Calculate the total size of the dataset
+            flash(f'Dataset has been uploaded','success')
 
     return render_template('upload_dataset.html', dataset_head=dataset_head, dataset_size=dataset_size)
 
@@ -86,7 +87,8 @@ def preprocess_data():
         preprocessed_data_head = dataset[:5]
     else:
         preprocessed_data_head = "Dataset is not available."
-
+        flash(f'Dataset is not available','warning')
+    flash(f'Dataset has been preprocessed','success')
     return render_template('preprocessed_data.html', preprocessed_data_head=preprocessed_data_head, dataset_size=dataset_size)
 
 
@@ -139,8 +141,8 @@ def generate_cnn_model():
     
 
     if X is not None and Y is not None:
-        text += "Starting CNN model generation...\n"
-
+        text += "Starting ANN model generation...\n"
+        flash(f'Starting ANN model generation...','success')
         if cnn_model is None:
             # Reshape X for 1D CNN
             X = X.reshape(X.shape[0], X.shape[1], 1)
@@ -180,9 +182,11 @@ def generate_cnn_model():
             # Save the model
             cnn_model.save('ann_model.h5')
             text += "ANN model saved as 'ann_model.h5'\n"
+            flash(f'ANN model saved as ann_model.h5','success')
 
         else:
             text += "ANN model already exists. You can reuse it."
+            flash(f'ANN model already exists. You can reuse it.','success')
 
     print("Classes in Y:", np.unique(Y))
 
@@ -193,6 +197,7 @@ def generate_cnn_model():
 def cnn_with_random_forest():
     global classifier, X, Y, cnn_model, accuracy, precision, recall, fscore  # Declare classifier as global
     if cnn_model is None:
+        flash(f'ANN model is required before running ANN with Random Forest','warning')
         return "ANN model is required before running ANN with Random Forest."
 
     text = ""  # Initialize an empty string to store results
@@ -226,7 +231,7 @@ def cnn_with_random_forest():
     text += "ANN with Random Forest Recall: {:.2f}%\n".format(r)
     text += "ANN with Random Forest FMeasure: {:.2f}%\n".format(f)
     
-
+    flash(f'ANN model with random forst is generated','success')
     return render_template('cnn_with_random_forest.html', results_text=text)
 
 
@@ -237,6 +242,7 @@ def cnn_with_svm():
     global X, Y, cnn_model,accuracy, precision, recall, fscore  # Add 'cnn_model' to the global variables
 
     if cnn_model is None:
+        flash(f'ANN model is required before running ANN with SVM','warning')
         return "ANN model is required before running ANN with SVM."
 
     text = ""  # Initialize an empty string to store results
@@ -276,7 +282,7 @@ def cnn_with_svm():
     text += "ANN with SVM Recall: {:.2f}%\n".format(r)
     text += "ANN with SVM FMeasure: {:.2f}%\n".format(f)
     
-
+    flash(f'ANN model with SVM is generated','success')
     return render_template('cnn_with_svm.html', results_text=text)
 
 
@@ -310,7 +316,7 @@ def run_random_forest():
             text += "Random Forest Recall: {:.2f}%\n".format(r)
             text += "Random Forest FMeasure: {:.2f}%\n".format(f)
             
-
+    flash(f'Random Forest is generated','success')
     # Render the HTML template that contains the text area
     return render_template('run_random_forest.html', results_text=text)
 
@@ -344,7 +350,7 @@ def run_svm():
         text += "SVM Recall: " + str(r) + "\n"
         text += "SVM FMeasure: " + str(f) + "\n"
         
-
+    flash(f'SVM is generated','success')
     # Render the HTML template that contains the text area
     return render_template('run_svm.html', results_text=text)
 
@@ -382,7 +388,7 @@ def predict_theft():
                     results.append("Record {} ===> NOT detected as ENERGY THEFT".format(data[i]))
 
             return render_template('predict_theft_result.html', results=results)
-
+    flash(f'Data is Predicted','success')
     return render_template('predict_theft_result.html')
 
 
@@ -406,7 +412,7 @@ def graph_comparison():
     plt.title('Performance Metrics for Different Algorithms')
     # Optionally, save the plot to an image file
     plt.savefig('static/performance_graph.png')
-    
+    flash(f'Graph generated','success')
     return render_template('graph.html')
 
 

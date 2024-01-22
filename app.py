@@ -251,9 +251,10 @@ def cnn_with_svm():
     predict = cnn_model.predict(X)
     YY = [np.argmax(pred) for pred in predict]
     YY = np.asarray(YY)
-    for i in range(len(YY)):
-        if(i<len(Y)):
-            YY[i]=Y[i]
+    YY[:len(Y)] = Y
+    # for i in range(len(YY)):
+    #     if(i<len(Y)):
+    #         YY[i]=Y[i]
 
     extract = Model(inputs=cnn_model.inputs, outputs=cnn_model.layers[-2].output)
     XX = extract.predict(X)
